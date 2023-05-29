@@ -31,8 +31,8 @@ def pot_ii(N, s=(1+(5**0.5))/2, overlap=None):
 
     """
     # ensure N is divisible 2 and is an integer
-    if N % 2 != 0 or type(N) != int:
-        raise ValueError('N must be an integer divisible by 2.')
+    """if N % 2 != 0 or type(N) != int:
+        raise ValueError('N must be an integer divisible by 2.')"""
     if overlap is None:
         # produces an integer which survives next test
         overlap = N//2
