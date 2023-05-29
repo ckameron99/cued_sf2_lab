@@ -1,3 +1,5 @@
+import numpy as np
+
 from cued_sf2_lab.laplacian_pyramid import rowint, rowdec, quantise
 
 def downscale(X, h):
@@ -20,8 +22,8 @@ def lp_encode(X, n, h):
     Xn = downscale(X, h)
     return X - upscale(Xn, h), *lp_encode(Xn, n-1, h)
 
-def dct_std(X, qnum, N=8):
-    Ys = lp_encode(X, N=N)
+def dct_std(X, qnum, n, h):
+    Ys = lp_encode(X, n, h)
     Yq = [quantise(Y, qnum) for Y in Ys]
-    Z = dct_decode(Yq, N=N)
+    Z = lp_decode(*Yq, h)
     return np.std(X-Z)
